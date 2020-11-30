@@ -48,7 +48,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * <pre>
         Import-Module posh-git
         Import-Module oh-my-posh
-        Set-Theme Paradox
+        Set-Theme Powerlevel10k-Classic
         </pre>
     * Save and Exit
   * Set Execution Policy
