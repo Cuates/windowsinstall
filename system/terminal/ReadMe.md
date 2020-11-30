@@ -11,6 +11,13 @@
 [Give an awesome look to your terminal!](https://www.youtube.com/watch?v=JnJm4gRrWN8)<br />
 [Powerlevel 9k Personalise Your Terminal Prompt For Any Programming Language](https://blog.hassler.ec/wp/2018/11/23/powerlevel9k-personalise-your-terminal-prompt-for-any-programming-language/)
 
+* Download and Install Windows Terminal and PowerShell
+  * Microsoft Store
+    * Search
+      * Windows Terminal (1.4.3243.0) or Windows Terminal Preview (1.5.3242.0)
+      * PowerShell (7.1.0 stable version)
+      * Ubuntu (20.04 version)
+
 * Enable WSL and Update to WSL 2
   * Open PowerShell as administrator
     * Type
@@ -34,12 +41,6 @@
       * `wsl --set-default-version 2`
       * `wsl -d ubuntu`
         * Will launch you into the associated bash shell
-
-* Download and Install Windows Terminal and PowerShell
-  * Microsoft Store
-    * Search
-      * Windows Terminal (1.4.3243.0) or Windows Terminal Preview (1.5.3242.0)
-      * PowerShell (7.1.0 stable version)
 
 * Open Ubuntu Terminal via Microsoft Terminal
   * Navigate to the ohmyzsh github page
