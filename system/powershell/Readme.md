@@ -102,6 +102,9 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
         </pre>
   * Locate Prompt
     * Modify with the following
-      * $sl.PromptSymbols.PromptIndicator = '$'
+      * <pre>
+        $sl.PromptSymbols.PromptIndicator = '$'
+        $sl.Colors.PromptSymbolColor = [ConsoleColor]::Green
+        </pre>
   * Save and Exit
   * Open Windows Terminal PowerShell mode to see changes
