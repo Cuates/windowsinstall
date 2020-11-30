@@ -3,6 +3,10 @@
 
 ## Table of Contents
 * [Terminal](#terminal)
+* [PowerShell](#powershell)
 
 ### Terminal
-* [Windows 10](https://github.com/Cuates/windowsinstall/tree/main/system/terminal)
+* [1.4.3243.0](https://github.com/Cuates/windowsinstall/tree/main/system/terminal)
+
+### PowerShell
+* [7.1.0](https://github.com/Cuates/windowsinstall/tree/main/system/powershell)
