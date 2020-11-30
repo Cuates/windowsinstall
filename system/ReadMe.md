@@ -5,4 +5,4 @@
 * [Terminal](#terminal)
 
 ### Terminal
-* [Windows 11](https://github.com/Cuates/macosinstall/tree/main/system/terminal)
+* [Windows 11](https://github.com/Cuates/windowsinstall/tree/main/system/terminal)
