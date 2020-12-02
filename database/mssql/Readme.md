@@ -1,14 +1,14 @@
-[Microsoft SQL Server](https://filecr.com/windows/microsoft-sql-server/)
-[Install SQL Server Developer Edition On Windows  Server](https://computingforgeeks.com/install-sql-server-developer-edition-on-windows-server/)
-[How To Enable Remote Connections To SQL Server](https://medium.com/@nishancw/how-to-enable-remote-connections-to-sql-server-dc5b6c812b5)
-[How To Enable  Remote  Desktop In Windows Server 2019](https://www.rootusers.com/how-to-enable-remote-desktop-in-windows-server-2019/)
-[Download SQL Server Management Studio SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
-[SQL Server 2019 Installation Step By Step 2020](https://www.youtube.com/watch?v=bfMoKqpigxI)
-[How To Download And Install SQL 2019 And SQL Server Management Studio 2020](https://www.youtube.com/watch?v=1lOUm5CZlAk)
-[Allow SQL Server through Windows Firewall](https://www.youtube.com/watch?v=3jVTUll4PXs)
-[How to allow SQL Server thorugh Window Firewall](https://www.youtube.com/watch?v=9O2GLm3iNp8)
-[Windows Firewall Configuration For SQL Server To Allow Remote Connection](https://www.youtube.com/watch?v=3Eyva0OG2tc)
-[Connect To SQL Server From Another Computer](https://www.youtube.com/watch?v=EqI77fd_1kU)
+[Microsoft SQL Server](https://filecr.com/windows/microsoft-sql-server/)<br />
+[Install SQL Server Developer Edition On Windows  Server](https://computingforgeeks.com/install-sql-server-developer-edition-on-windows-server/)<br />
+[How To Enable Remote Connections To SQL Server](https://medium.com/@nishancw/how-to-enable-remote-connections-to-sql-server-dc5b6c812b5)<br />
+[How To Enable  Remote  Desktop In Windows Server 2019](https://www.rootusers.com/how-to-enable-remote-desktop-in-windows-server-2019/)<br />
+[Download SQL Server Management Studio SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)<br />
+[SQL Server 2019 Installation Step By Step 2020](https://www.youtube.com/watch?v=bfMoKqpigxI)<br />
+[How To Download And Install SQL 2019 And SQL Server Management Studio 2020](https://www.youtube.com/watch?v=1lOUm5CZlAk)<br />
+[Allow SQL Server through Windows Firewall](https://www.youtube.com/watch?v=3jVTUll4PXs)<br />
+[How to allow SQL Server thorugh Window Firewall](https://www.youtube.com/watch?v=9O2GLm3iNp8)<br />
+[Windows Firewall Configuration For SQL Server To Allow Remote Connection](https://www.youtube.com/watch?v=3Eyva0OG2tc)<br />
+[Connect To SQL Server From Another Computer](https://www.youtube.com/watch?v=EqI77fd_1kU)<br />
 [Allow Remote Connections To SQL Server Express](https://www.youtube.com/watch?v=5UkHYNwUtCo)
 
 # Windows Server
