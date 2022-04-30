@@ -33,6 +33,13 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
   * Open Windows Terminal
     * Type in command line
       * `Install-Module posh-git -Scope CurrentUser`
+      * NuGet provider is required to continue
+PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
+ provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
+'C:\Users\cuateshd\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
+running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
+and import the NuGet provider now?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
         * Untrusted repository
           * A Enter ([A] Yes to All)
             * **WAIT FOR THIS TO FINISH**
