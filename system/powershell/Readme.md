@@ -32,7 +32,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
 * Configure Powerline for PowerShell
   * Open Windows Terminal
     * Type in command line
-      * Install-Module posh-git -Scope CurrentUser
+      * `Install-Module posh-git -Scope CurrentUser`
         * Untrusted repository
           * A Enter ([A] Yes to All)
             * **WAIT FOR THIS TO FINISH**
