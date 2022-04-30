@@ -25,7 +25,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
     * https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip
       * Unzip CascadiaCode-2009.22.zip
   * Navigate to the ttf folder you just unzipped
-    * Double click
+    * Double click and install the following fonts
       * CascadiaCodePL.ttf
       * CascadiaMonoPL.ttf
       * Click Install button
