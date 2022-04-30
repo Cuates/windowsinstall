@@ -30,7 +30,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * CascadiaMonoPL.ttf
     * OR Drag and drop the ttf files to C:\Windows\Fonts
 * Configure Powerline for PowerShell
-  * Open Windows Terminal
+  * Open Windows Terminal/PowerShell as administrator
     * Type in command line
       * `Install-Module posh-git -Scope CurrentUser`
         * The following message will display if NuGet is not installed
