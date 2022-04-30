@@ -46,7 +46,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
         * Untrusted repository
           * A Enter ([A] Yes to All)
             * **WAIT FOR THIS TO FINISH**
-      * Install-Module oh-my-posh -Scope CurrentUser
+      * `Install-Module oh-my-posh -Scope CurrentUser`
         * Untrusted repository
           * A Enter ([A] Yes to All)
             * **WAIT FOR THIS TO FINISH**
