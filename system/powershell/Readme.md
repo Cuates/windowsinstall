@@ -66,7 +66,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
     * Issue with Microsoft.PowerShell_profile.ps1 cannot be loaded because running scripts is disabled on this system
     * Open a Windows Terminal for Windows PowerShell as Administrator
       * Type
-        * Set-ExecutionPolicy Unrestricted
+        * `Set-ExecutionPolicy Unrestricted`
           * A Enter ([A] Yes to All)
   * Modify Settings to enable new ttfs
     * Open Windows Terminal
