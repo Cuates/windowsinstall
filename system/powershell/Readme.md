@@ -28,7 +28,6 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
     * Double click and install the following fonts
       * CascadiaCodePL.ttf
       * CascadiaMonoPL.ttf
-      * Click Install button
     * OR Drag and drop the ttf files to C:\Windows\Fonts
 * Configure Powerline for PowerShell
   * Open Windows Terminal
