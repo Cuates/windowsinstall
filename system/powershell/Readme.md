@@ -91,7 +91,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * Save and Exit
   * Change oh-my-posh Themes (OPTIONAL)
     * Locate themes
-      * C:\Users\<username>\Documents\WindowsPowerShell\Modules\oh-my-posh\2.0.487\Themes
+      * C:\Users\\<username>\Documents\WindowsPowerShell\Modules\oh-my-posh\2.0.487\Themes
     * Open Windows Terminal
       * Type
         * `Set-Prompt`
