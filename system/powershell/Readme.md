@@ -52,15 +52,16 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
             * **WAIT FOR THIS TO FINISH**
   * Locate and modify profile file
     * Type in command line
-      * echo $profile
-      * notepad $PROFILE
-    * Add to file
-      * <pre>
-        Import-Module posh-git
-        Import-Module oh-my-posh
-        Set-Theme Powerlevel10k-Classic
-        </pre>
-    * Save and Exit
+      * `echo $profile`
+      * `notepad $PROFILE`
+        * If prompted to create file, then proceed to create file
+        * Add to file
+          * <pre>
+            Import-Module posh-git
+            Import-Module oh-my-posh
+            Set-Theme Powerlevel10k-Classic
+            </pre>
+      * Save and Exit
   * Set Execution Policy
     * Issue with Microsoft.PowerShell_profile.ps1 cannot be loaded because running scripts is disabled on this system
     * Open a Windows Terminal for Windows PowerShell as Administrator
