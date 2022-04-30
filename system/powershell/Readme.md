@@ -67,7 +67,8 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
     * Open a Windows Terminal for Windows PowerShell as Administrator
       * Type
         * `Set-ExecutionPolicy Unrestricted`
-          * A Enter ([A] Yes to All)
+          * If the following menu is prompted then proceed below
+            * A Enter ([A] Yes to All)
   * Modify Settings to enable new ttfs
     * Open Windows Terminal
       * Click \/
