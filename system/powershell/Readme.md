@@ -96,7 +96,7 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * Type
         * `Set-Prompt`
         * `Set-Theme <theme_name_without_extension_psm1>`
-* Modify C:\Users\\\<username>\Documents\PowerShell\Modules\oh-my-posh\2.0.487\ThemesParadox.psm1 file
+* Modify C:\Users\\\<username>\Documents\WindowsPowerShell\Modules\oh-my-posh\2.0.487\ThemesParadox.psm1 file
   * Locate $timeStamp
     * Modify with the following
       * <pre>
