@@ -123,18 +123,23 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
   * Open Windows Terminal PowerShell mode to see changes
 
 ### Oh-my-posh V3
-* Open PowerShell in administrator mode
+* Microsoft Store (Dependent applications)
+  * Search
+    * Windows Terminal (1.4.3243.0) or Windows Terminal Preview (1.5.3242.0)
+    * PowerShell (7.1.0 stable version)
+* Open Windows Terminal Preview in administrator mode
 * Execute the following command
   * `winget install oh-my-posh`
   * <pre>
       Do you agree to all the source agreements terms?
       [Y] Yes  [N] No: Y Enter
     </pre>
-  * Exit and Close PowerShell window
+  * Exit and Close Windows Terminal Preview window
   * Change default theme
     * `oh-my-posh init pwsh --config ~/.powerlevel10k_modern.omp.json | Invoke-Expression`
   * Make sure to enable oh-my-posh on PowerShell startup
     * `notepad $PROFILE`
+      * If prompted to create file, then proceed to create file
     * Paste the following
       * `oh-my-posh init pwsh | Invoke-Expression`
       * Save and Exit Notepad
