@@ -161,7 +161,10 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * CTRL + SHIFT + ,
       * Modify text in fontFace line located at profiles and defaults
         * <pre>
-            "fontFace": "MesloLGM Nerd Font",
-            "fontSize": 14
+            "font":
+            {
+                "face": "MesloLGM Nerd Font",
+                "size": 14
+            }
           </pre>
         * Save and Exit
