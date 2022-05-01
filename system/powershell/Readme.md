@@ -140,3 +140,16 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
       * Save and Exit Notepad
     * Reload PowerShell
       * `. $PROFILE`
+  * Download and Install Nerd Fonts
+    * https://www.nerdfonts.com/font-downloads
+      * Locate and Download Meslo Nerd Font
+      * Unzip download
+      * Double click and install the following font
+        * Meslo LG M Regular Nerd Font Complete
+      * Exit out of PowerShell if still open
+    * Reopen PowerShell
+    * Press keyboard shortcut to open settings.json file
+      * CTRL + SHIFT + ,
+      * Modify text in fontFace line located at profiles and defaults
+        * fontFace
+          * MesloLGM Nerd Font
