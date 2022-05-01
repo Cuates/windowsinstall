@@ -11,7 +11,11 @@
 [Windows 10 Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)<br />
 [Powerline Repo](https://github.com/justjanne/powerline-go?WT.mc_id=-blog-scottha)<br />
 [PowerShell Get Date](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-date?view=powershell-7.1)<br />
-[How To Format Date String In PowerShell](https://www.tutorialspoint.com/how-to-format-date-string-in-powershell)
+[How To Format Date String In PowerShell](https://www.tutorialspoint.com/how-to-format-date-string-in-powershell) <br />
+[oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)<br />
+[oh-my-posh dev](https://ohmyposh.dev/)<br />
+[Windows Install](https://ohmyposh.dev/docs/installation/windows)<br />
+[PowerLevel10k Modern Theme](https://ohmyposh.dev/docs/themes#powerlevel10k_modern)<br />
 
 Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
 
