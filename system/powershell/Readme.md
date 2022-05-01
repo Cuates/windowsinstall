@@ -133,3 +133,10 @@ Install Paradox and PowerLine via Command Line Using PowerShell ZSH oh-my-posh
   * Exit and Close PowerShell window
   * Change default theme
     * `oh-my-posh init pwsh --config ~/.powerlevel10k_modern.omp.json | Invoke-Expression`
+  * Make sure to enable oh-my-posh on PowerShell startup
+    * `notepad $PROFILE`
+    * Paste the following
+      * `oh-my-posh init pwsh | Invoke-Expression`
+      * Save and Exit Notepad
+    * Reload PowerShell
+      * `. $PROFILE`
