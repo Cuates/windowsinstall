@@ -13,8 +13,8 @@ Remote Desktop Connection
 * Enable Settings
   * Settings > System > Remote Desktop
     * Toggle Remote Desktop to On
+    * Click button "Confirm" to enable remote desktop
     * NOTE: Make sure port number from above is shown in "Remote Desktop port"
-  * Click button "Confirm" to enable remote desktop
 * Add Port Number to firewall
   * Windows Defender Firewall
     * Click "Advanced settings"
