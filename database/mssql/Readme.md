@@ -154,7 +154,7 @@
         * Click Okay
 
 # SQL Remote Connection
-  * Allow Remove Connection
+  * Allow Remote Connection
     * Open SSMS as an administrator
       * Login
       * Right click Server Name
