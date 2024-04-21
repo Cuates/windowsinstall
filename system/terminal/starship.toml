@@ -1,0 +1,134 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[ ](fg:color_black bg:color_orange)\
+$os\
+$username\
+[](fg:color_orange bg:color_yellow)\
+$directory\
+[](fg:color_yellow bg:color_aqua)\
+$git_branch\
+$git_status\
+[](fg:color_aqua bg:color_blue)\
+$c\
+$nodejs\
+$php\
+$python\
+[](fg:color_blue bg:color_bg1)\
+$time\
+[$shell](fg:color_bg3 bg:color_blue2)\
+$character\
+$line_break"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_fg1 = '#ffffff'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_black = '#000000'
+color_blue = '#458588'
+color_blue2 = '#4b95e9'
+color_aqua = '#689d6a'
+color_green = '#008000'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+
+[os]
+disabled = false
+style = "fg:color_fg0 bg:color_orange"
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+CentOS = ""
+Debian = "󰣚"
+Linux = "󰌽"
+Macos = "󰀵"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+RockyLinux = ""
+Ubuntu = "󰕈"
+Unknown = ""
+Windows = ""
+
+[username]
+show_always = true
+style_user = "fg:color_fg0 bg:color_orange"
+style_root = "fg:color_fg0 bg:color_orange"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_fg0 bg:color_yellow"
+format = "[  $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[shell]
+disabled = false
+powershell_indicator = "[  ](fg:color_bg1 bg:color_blue2)"
+cmd_indicator = ""
+
+[git_branch]
+symbol = ""
+style = "bg:color_aqua"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+
+[git_status]
+style = "bg:color_aqua"
+format = '[[($ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed )](fg:color_fg0 bg:color_aqua)]($style)'
+conflicted = "[◪◦](italic bright-magenta)"
+ahead = "[▲│[${count}](bold white)│](italic green)"
+behind = "[▽│[${count}](bold white)│](italic red)"
+diverged = "[◇ ▲┤[${ahead_count}](regular white)│▽┤[${behind_count}](regular white)│](italic bright-magenta)"
+untracked = "[◌◦](italic bright-yellow)"
+stashed = "[◦◫◦](italic white)"
+modified = " +$count"
+staged = "[■┤[$count](bold white)│](italic bright-cyan)"
+renamed = "[◎◦](italic bright-blue)"
+deleted = "[✕](italic red)"
+
+[nodejs]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[time]
+disabled = false
+time_format = "%T"
+style = "bg:color_bg1"
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)[](fg:color_bg1 bg:color_blue2)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[ ](fg:color_blue2 bg:color_green)[ ](bold fg:color_fg1 bg:color_green)[](fg:color_green)'
+error_symbol = '[ ](fg:color_blue2 bg:color_red)[ ](bold fg:color_fg1 bg:color_red)[](fg:color_red)'
