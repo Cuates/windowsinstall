@@ -85,20 +85,22 @@ bash_indicator = "[  ](fg:color_bg1 bg:color_blue2)"
 symbol = ""
 style = "bg:color_aqua"
 format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+truncation_length = 10
+truncation_symbol = "…/"
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed )](fg:color_fg0 bg:color_aqua)]($style)'
-conflicted = "[◪◦](italic bright-magenta)"
-ahead = "[▲│[${count}](bold white)│](italic green)"
-behind = "[▽│[${count}](bold white)│](italic red)"
-diverged = "[◇ ▲┤[${ahead_count}](regular white)│▽┤[${behind_count}](regular white)│](italic bright-magenta)"
-untracked = "[◌◦](italic bright-yellow)"
-stashed = "[◦◫◦](italic white)"
-modified = " +$count"
-staged = "[■┤[$count](bold white)│](italic bright-cyan)"
-renamed = "[◎◦](italic bright-blue)"
-deleted = "[✕](italic red)"
+format = '[[($conflicted$ahead$behind$untracked$stashed$modified$staged$renamed$deleted)](fg:color_fg0 bg:color_aqua)]($style)'
+conflicted = "[= ${count}](italic bright-magenta)"
+ahead = "[⇡[${count}](bold white)│](italic green)"
+behind = "[⇣[${count}](bold white)│](italic red)"
+up_to_date = "[✓](green)"
+untracked = "[?${count}](italic bright-yellow)"
+stashed = "[$${count}](italic white)"
+modified = "!+${count}"
+staged = "[+[${count}](bold white)│](italic bright-cyan)"
+renamed = "[»${count}](italic bright-blue)"
+deleted = "[✘${count}](italic red)"
 
 [nodejs]
 symbol = ""
