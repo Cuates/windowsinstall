@@ -78,7 +78,8 @@ truncation_symbol = "…/"
 [shell]
 disabled = false
 powershell_indicator = "[  ](fg:color_bg1 bg:color_blue2)"
-cmd_indicator = ""
+cmd_indicator = "[  ](fg:color_bg1 bg:color_blue2)"
+bash_indicator = "[  ](fg:color_bg1 bg:color_blue2)"
 
 [git_branch]
 symbol = ""
@@ -130,5 +131,5 @@ disabled = true
 
 [character]
 disabled = false
-success_symbol = '[ ](fg:color_blue2 bg:color_green)[ ](bold fg:color_fg1 bg:color_green)[](fg:color_green)'
-error_symbol = '[ ](fg:color_blue2 bg:color_red)[ ](bold fg:color_fg1 bg:color_red)[](fg:color_red)'
+success_symbol = '[ ](fg:color_blue2 bg:color_green)[ ](bold fg:color_fg1 bg:color_green)[](fg:color_black bg:color_green)'
+error_symbol = '[ ](fg:color_blue2 bg:color_red)[ ](bold fg:color_fg1 bg:color_red)[](fg:color_black bg:color_red)'
