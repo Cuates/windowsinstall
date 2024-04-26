@@ -18,7 +18,7 @@ $python\
 $time\
 [$shell](fg:color_bg3 bg:color_blue2)\
 $character\
-$line_break"""
+$line_break[ ](fg:color_green)"""
 
 palette = 'gruvbox_dark'
 
