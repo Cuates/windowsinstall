@@ -130,7 +130,7 @@ style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)[](fg:color_bg1 bg:color_blue2)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
 disabled = false
