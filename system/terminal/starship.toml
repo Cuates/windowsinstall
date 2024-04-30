@@ -70,7 +70,7 @@ format = '[ $user ]($style)'
 
 [hostname]
 ssh_only = false
-format = 'on [$hostname](bold fg:color_bg1 bg:color_orange)'
+format = 'on [$hostname ](bold fg:color_bg1 bg:color_orange)'
 trim_at = "."
 disabled = false
 
