@@ -4,6 +4,7 @@ format = """
 [ ](fg:color_black bg:color_orange)\
 $os\
 $username\
+[$hostname](fg:color_fg0 bg:color_orange)\
 [](fg:color_orange bg:color_yellow)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -17,8 +18,12 @@ $python\
 [](fg:color_blue bg:color_bg1)\
 $time\
 [$shell](fg:color_bg3 bg:color_blue2)\
+[$cmd_duration](fg:color_fg0 bg:color_blue2)\
 $character\
-$line_break[ ](fg:color_green)"""
+$line_break\
+[ ](fg:color_green)"""
+
+command_timeout = 1000
 
 palette = 'gruvbox_dark'
 
@@ -63,11 +68,23 @@ style_user = "fg:color_fg0 bg:color_orange"
 style_root = "fg:color_red1 bg:color_orange"
 format = '[ $user ]($style)'
 
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold fg:color_bg1 bg:color_orange)'
+trim_at = "."
+disabled = false
+
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
 format = "[  $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
+
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
+disabled = false
+style = "fg:color_fg0 bg:color_blue2"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
