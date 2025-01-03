@@ -234,3 +234,14 @@
     * Refresh ZSH syntax highlighting
       * `source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 * Starship
+  * Create a `Microsoft.PowerShell.profile.ps1` file inside the `C:\Users\<username>\Documents\PowerShell` directory
+    * If there is no PowerShell folder then create a folder within the following path `C:\Users\<username>\Documents\PowerShell`
+    * Add the following line to the `Microsoft.PowerShell.profile.ps1` file
+      * Make sure to put in the correct file path of the starship executable
+      * <pre>
+          Invoke-Expression (& 'C:\Program Files\starship\bin\starship.exe' init powershell)
+        </pre>
+  * Create the following file named `starship.toml` inside the `C:\Users\<username>\.config` directory
+    * Use the following [starship.toml](https://github.com/Cuates/windowsinstall/blob/main/system/terminal/starship.toml) as a guide to what you can do to your terminal
+  * Exit out of your terminal to refresh your new look
+  * If the icons are not showing up, then set up your fonts to match the the one you chose for your starship configuration
