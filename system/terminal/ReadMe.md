@@ -11,7 +11,11 @@
 [Give an awesome look to your terminal!](https://www.youtube.com/watch?v=JnJm4gRrWN8)<br />
 [Powerlevel 9k Personalise Your Terminal Prompt For Any Programming Language](https://blog.hassler.ec/wp/2018/11/23/powerlevel9k-personalise-your-terminal-prompt-for-any-programming-language/)<br />
 [Starship Installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)<br />
-[Starship Releases](https://github.com/starship/starship/releases)
+[Starship Releases](https://github.com/starship/starship/releases)<br />
+[Install Starship Shell prompt for Bash, Zsh, Fish and PowerShell](https://techviewleo.com/install-starship-shell-prompt-bash-zsh-fish/)<br />
+[Creating my awesome Windows 10 dev setup](https://www.chimerical.ca/posts/creating-my-awesome-windows-10-dev-setup)<br />
+[Starship](https://docs.jonasbirkelof.se/tech/starship/)<br />
+[My Configs for a Fancy-Looking Terminal (starship, exa, fonts)](https://fadeevab.com/my-configs-for-fancy-looking-terminal-starship-exa/)<br />
 
 * Download and Install Windows Terminal and PowerShell
   * Microsoft Store
