@@ -235,7 +235,7 @@
       * `source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 * Starship
   * Create a `Microsoft.PowerShell.profile.ps1` file inside the `C:\Users\<username>\Documents\PowerShell` directory
-    * If there is no PowerShell folder then create a folder within the following path `C:\Users\<username>\Documents\PowerShell`
+    * If there is no PowerShell folder then create a folder within the following path `C:\Users\<username>\Documents`
     * Add the following line to the `Microsoft.PowerShell.profile.ps1` file
       * Make sure to put in the correct file path of the starship executable
       * <pre>
