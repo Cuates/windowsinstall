@@ -226,6 +226,7 @@
     * Change working directory
       * `cd ~/.oh-my-zsh/custom/plugins/`
     * Echo string into ZSHrc file
+* Starship
       * `echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc`
     * Refresh ZSH syntax highlighting
       * `source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
