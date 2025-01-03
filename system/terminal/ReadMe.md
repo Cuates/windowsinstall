@@ -9,7 +9,8 @@
 [Powerline Fonts](https://github.com/powerline/fonts)<br />
 [Color Hex](https://www.color-hex.com/)<br />
 [Give an awesome look to your terminal!](https://www.youtube.com/watch?v=JnJm4gRrWN8)<br />
-[Powerlevel 9k Personalise Your Terminal Prompt For Any Programming Language](https://blog.hassler.ec/wp/2018/11/23/powerlevel9k-personalise-your-terminal-prompt-for-any-programming-language/)
+[Powerlevel 9k Personalise Your Terminal Prompt For Any Programming Language](https://blog.hassler.ec/wp/2018/11/23/powerlevel9k-personalise-your-terminal-prompt-for-any-programming-language/)<br />
+[Starship](https://starship.rs/guide/#%F0%9F%9A%80-installation)
 
 * Download and Install Windows Terminal and PowerShell
   * Microsoft Store
