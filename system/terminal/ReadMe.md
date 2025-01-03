@@ -244,4 +244,4 @@
   * Create the following file named `starship.toml` inside the `C:\Users\<username>\.config` directory
     * Use the following [starship.toml](https://github.com/Cuates/windowsinstall/blob/main/system/terminal/starship.toml) as a guide to what you can do to your terminal
   * Exit out of your terminal to refresh your new look
-  * If the icons are not showing up, then set up your fonts to match the the one you chose for your starship configuration
+  * If the icons are not showing up, then set up your [fonts](https://www.nerdfonts.com) to match the one you chose for your starship configuration
