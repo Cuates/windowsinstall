@@ -1,0 +1,64 @@
+# powershell.exe -ExecutionPolicy Bypass -File "C:\Path\To\Run-PackageUpdater.ps1"
+
+# Run-PackageUpdater.ps1
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+# Elevate if not admin
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "🔐 Elevating to administrator..." -ForegroundColor Yellow
+    $args = "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+    Start-Process powershell.exe -Verb RunAs -ArgumentList $args
+    exit
+}
+
+# Import module
+$modulePath = Join-Path $PSScriptRoot 'PackageUpdater.psm1'
+if (-not (Test-Path $modulePath)) {
+    Write-Host "❌ Could not find PackageUpdater.psm1 in $PSScriptRoot" -ForegroundColor Red
+    exit 1
+}
+Import-Module $modulePath -Force
+
+# Ensure log folder exists
+Ensure-LogFolder
+
+# Load tab completion
+$tabPath = Join-Path $PSScriptRoot 'TabCompletion.ps1'
+if (Test-Path $tabPath) {
+    . $tabPath
+}
+
+# 🧾 Show startup header
+Clear-Host
+Write-FancyHeader "PACKAGE UPDATER"
+Write-Host "  Started: " -NoNewline -ForegroundColor Gray
+Write-Host (Get-Date -Format "yyyy-MM-dd HH:mm:ss") -ForegroundColor White
+Write-Host "  Log: " -NoNewline -ForegroundColor Gray
+Write-Host (Get-LogFilePath) -ForegroundColor White
+
+# Run update workflow
+$start = Get-Date
+# Save-PackageSnapshot -Label "before"
+
+$pip = Update-PipPackages
+$choco = Update-ChocolateyPackages
+$winget = Update-WingetPackages
+
+# Save-PackageSnapshot -Label "after"
+$duration = (Get-Date) - $start
+
+Show-SummaryPanel -Pip $pip.Count -Choco $choco.Count -Winget $winget -Duration $duration -PipSelfUpdated $pip.PipSelfUpdated -ChocoSkipped $choco.Skipped
+Log-ErrorSummary
+
+# Optional: graceful exit countdown
+Write-Host ""
+for ($i = 5; $i -gt 0; $i--) {
+    Write-Host "`r  Closing in $i seconds... Press any key to exit now." -NoNewline -ForegroundColor Cyan
+    if ([Console]::KeyAvailable) {
+        $null = [Console]::ReadKey($true)
+        break
+    }
+    Start-Sleep -Seconds 1
+}
+Write-Host ""
