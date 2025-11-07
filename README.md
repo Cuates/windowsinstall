@@ -3,9 +3,9 @@
 
 ## Table of Contents
 * [Database](#database)
-* [Package_Installer](#packageinstaller)
+* [Package_Installer](#package_installer)
 * [System](#system)
-* [Update_Script](#updatescript)
+* [Update_Script](#update_script)
 
 ### Version
 * 0.0.1
