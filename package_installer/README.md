@@ -16,7 +16,7 @@
   - ✅ Safe exit if the selected package list is empty
   - ✅ Dynamically installs the latest Python 3.x version via Winget if missing
   - ✅ Avoids Microsoft Store alias trap by checking Winget directly
-  - ✅ Instructs user to restart terminal after Python install
+  - ✅ Instructs user to restart the terminal after Python install
   - ✅ Displays real-time install progress for each package (no more blinking cursor)
 
 
@@ -24,7 +24,7 @@
 
 | File                   | Purpose |
 |------------------------|---------|
-| `windows_package_setup.ps1`  | PowerShell script to setup Python, Chocolatey, and run the installer |
+| `windows_package_setup.ps1`  | PowerShell script to set up Python, Chocolatey, and run the installer |
 | `install_packages.py`  | Python script with skip logic, logging, and summary reporting |
 | `install_packages.log` | Rotating UTF-8 log file (auto-generated) |
 | `pip_packages.txt`     | List of Python packages for pip |
@@ -59,7 +59,7 @@
 - Installs Chocolatey if needed (for `choco`)
 - Checks if Python is installed via Winget
 - If missing, installs the latest Python 3.x version dynamically via Winget
-- Instructs user to restart terminal after Python install
+- Instructs the user to restart the terminal after Python installation
 - Runs the Python script to install packages from the selected `.txt` file
 - Skips already-installed packages
 - Logs all actions to `install_packages.log`
@@ -69,11 +69,13 @@
 - Streams real-time install output to the terminal for each package
 - Uses modular helper functions for version retrieval to reduce branching and improve clarity
 
-## 🔍 Package Search ResourcesUse these official repositories to find packages for each installer
+## 🔍 Package Search Resources: Use these official repositories to find packages for each installer
 
 - [Search pip packages on PyPI](https://pypi.org/)
 - [Search Chocolatey packages](https://community.chocolatey.org/packages)
 - [Search Winget packages on Winstall](https://winstall.app/)
+  - Alternative way of searching for packages using a Windows Terminal
+    - `winget search <PackageName>`
 Once you find a package, copy its name or ID and add it to the appropriate `.txt` file.
 
 ## ✅ Best Practices
