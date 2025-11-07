@@ -76,7 +76,7 @@
 - [Search Winget packages on Winstall](https://winstall.app/)
   - Alternative way of searching for packages using a Windows Terminal
     - `winget search <PackageName>`
-  - Once you find a package, copy its name or ID and add it to the appropriate `.txt` file.
+  - Once you find a package, copy its ID and add it to the appropriate `.txt` file.
 
 ## ✅ Best Practices
 
