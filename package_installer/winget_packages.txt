@@ -1,0 +1,3 @@
+Google.Chrome
+# VideoLAN.VLC
+# Git.Git
