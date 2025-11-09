@@ -10,6 +10,7 @@ import ctypes
 from pathlib import Path
 from enum import Enum
 from logging.handlers import RotatingFileHandler
+import time
 from typing import List, Tuple, Protocol
 
 class Installer(str, Enum):
@@ -139,27 +140,40 @@ def _get_choco_version(pkg: str) -> str:
                 return parts[1]
     return "unknown"
 
-def _get_winget_version(pkg: str) -> str:
-    """Retrieves the installed version of a Winget package."""
-    result = subprocess.run(
-        ["winget", "list", "--id", pkg, "--source", "winget"],
-        capture_output=True,
-        text=True,
-        check=False
-    )
-    lines = result.stdout.splitlines()
-    for i, line in enumerate(lines):
-        if "Name" in line and "Id" in line and "Version" in line:
-            header = line
-            separator_index = i + 1
-            break
-    else:
-        return "unknown"
+def _get_winget_version(pkg: str, timeout: int = 60, interval: int = 5) -> str:
+    """Waits for a Winget package to be installed and retrieves its version."""
+    print(f"Waiting for {pkg} to be fully installed...")
 
-    version_start = header.find("Version")
-    for line in lines[separator_index + 1:]:
-        if pkg.lower() in line.lower():
-            return line[version_start:].strip()
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        result = subprocess.run(
+            ["winget", "list", "--id", pkg, "--source", "winget"],
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        output = result.stdout
+        lines = output.splitlines()
+
+        for i, line in enumerate(lines):
+            if "Name" in line and "Id" in line and "Version" in line:
+                header = line
+                separator_index = i + 1
+                break
+        else:
+            time.sleep(interval)
+            continue
+
+        version_start = header.find("Version")
+        for line in lines[separator_index + 1:]:
+            if pkg.lower() in line.lower():
+                version = line[version_start:].strip()
+                print(f"{pkg} installed with version: {version}")
+                return version
+
+        time.sleep(interval)
+
+    print(f"Timeout reached. {pkg} not found.")
     return "unknown"
 
 def get_installed_version(installer: Installer, pkg: str) -> str:
@@ -179,7 +193,7 @@ def get_installed_version(installer: Installer, pkg: str) -> str:
         if installer == Installer.CHOCO:
             return _get_choco_version(pkg)
         if installer == Installer.WINGET:
-            return _get_winget_version(pkg)
+            return _get_winget_version(pkg, timeout=60, interval=5)
     except subprocess.SubprocessError as error:
         log_warning(f"[{installer}] Could not retrieve version for {pkg}: {error}")
     return "unknown"
