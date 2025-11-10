@@ -3,12 +3,13 @@
 # Run-PackageUpdater.ps1
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # Elevate if not admin
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "🔐 Elevating to administrator..." -ForegroundColor Yellow
-    $args = "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
-    Start-Process powershell.exe -Verb RunAs -ArgumentList $args
+    $restartParams = "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+    Start-Process powershell.exe -Verb RunAs -ArgumentList $restartParams
     exit
 }
 
@@ -20,8 +21,8 @@ if (-not (Test-Path $modulePath)) {
 }
 Import-Module $modulePath -Force
 
-# Ensure log folder exists
-Ensure-LogFolder
+# # Initialize log folder exists
+# Initialize-LogFolder
 
 # Load tab completion
 $tabPath = Join-Path $PSScriptRoot 'TabCompletion.ps1'
@@ -49,7 +50,7 @@ $winget = Update-WingetPackages
 $duration = (Get-Date) - $start
 
 Show-SummaryPanel -Pip $pip.Count -Choco $choco.Count -Winget $winget -Duration $duration -PipSelfUpdated $pip.PipSelfUpdated -ChocoSkipped $choco.Skipped
-Log-ErrorSummary
+Show-ErrorSummary
 
 # Optional: graceful exit countdown
 Write-Host ""
