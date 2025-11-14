@@ -193,17 +193,22 @@ function Update-PipSelf {
     }
 
     try {
+        $pythonPath = Get-Command python | Select-Object -ExpandProperty Source
+        Write-LogLine "Using Python at: $pythonPath"
+
         Write-Host "🔍 Checking for pip self-update..." -ForegroundColor Cyan
         Write-LogLine "Checking for pip self-update..."
-        $output = python -m pip install --upgrade pip 2>&1
-        $output | ForEach-Object {
-            if ($_ -notmatch '^WARNING: Ignoring') {
-                Write-Host $_ -ForegroundColor Gray
-                # Add-Content -Path $script:LogFile -Value $_ -Encoding UTF8
-                Write-LogLine $_
 
+        $output = & $pythonPath -m pip install --upgrade pip 2>&1
+        $output | ForEach-Object {
+            if ($_ -notmatch '^WARNING: Ignoring' -and $_ -notmatch '^\[notice\]') {
+                Write-Host $_ -ForegroundColor Gray
+                Write-LogLine $_
             }
         }
+
+        $finalVersion = & $pythonPath -m pip --version
+        Write-LogLine "Post-upgrade pip version: $finalVersion"
 
         if ($output -match 'Requirement already satisfied: pip') {
             Write-Log "pip is already up to date." -Level 'SUCCESS'
@@ -318,7 +323,6 @@ function Update-ChocolateyPackages {
 }
 
 function Update-WingetPackages {
-    # "+==== Update Winget Packages ====+" | Add-Content -Path $script:LogFile
     Write-LogLine "+==== Update Winget Packages ====+"
     Write-FancyHeader "Winget Packages"
 
@@ -332,10 +336,6 @@ function Update-WingetPackages {
         Write-LogLine "Starting Winget upgrade..."
 
         $upgradable = winget upgrade --accept-source-agreements 2>&1
-        # Add-Content -Path $script:LogFile -Value $upgradable -Encoding UTF8
-        # Write-LogLine $upgradable
-
-
         if ($upgradable -match "No installed package found|No applicable update found") {
             Write-Log "All winget packages are up to date!" -Level 'SUCCESS'
             return 0
@@ -346,10 +346,12 @@ function Update-WingetPackages {
             Write-Host "  $_" -ForegroundColor Gray
         }
 
+        # Run upgrade and capture output
         $job = Start-Job {
-            winget upgrade --all --silent --accept-source-agreements --accept-package-agreements 2>&1
+            winget upgrade --all --include-unknown --silent --accept-source-agreements --accept-package-agreements 2>&1
         }
 
+        # Spinner (console only, not logged)
         $spin = @('|','/','-','\'); $i = 0
         while ($job.State -eq 'Running') {
             Write-Host "`r$($spin[$i]) Updating..." -NoNewline -ForegroundColor Cyan
@@ -360,18 +362,71 @@ function Update-WingetPackages {
         $output = Receive-Job $job
         Remove-Job $job
 
-        # 🔄 Post-upgrade narration
-        $output | ForEach-Object {
-            # Write-Host $_ -ForegroundColor Gray
-            # Add-Content -Path $script:LogFile -Value $_ -Encoding UTF8
-            Write-LogLine $_
+        # Parse output for success/failure
+        $successes = @()
+        $failures = @()
+
+        if ($output[-1] -match '0x8[0-9A-Fa-f]{7}') {
+            Write-Log "Winget output ended abruptly due to error." -Level 'WARN'
         }
 
-        Write-Host "`r✅ Winget packages updated!        " -ForegroundColor Green
-        # "Winget packages updated successfully." | Add-Content -Path $script:LogFile
-        Write-LogLine "Winget packages updated successfully."
+        $output | ForEach-Object {
+            # Skip spinner and corrupted progress lines
+            if ($_ -match '\]\s*[-\\|/]$' -or $_ -match '\]\s*[\u2550-\u25FF]+.*\/.*MB' -or $_ -match 'Γ') {
+                return
+            } else {
+                Write-Host $_ -ForegroundColor Gray
+                Write-LogLine $_
+            }
 
-        return 1
+            if ($_ -match 'Found .* Version') {
+                Write-LogLine "🔄 Dependency detected: $_"
+            }
+
+            if ($_ -match 'Successfully installed (.+)') {
+                $successes += $matches[1].Trim()
+            } elseif ($_ -match 'Install failed: (.+)') {
+                $failures += $matches[1].Trim()
+            } elseif ($_ -match '0x8[0-9A-Fa-f]{7}') {
+                Write-Log "Winget error detected: $_" -Level 'ERROR'
+                $script:Errors += "Winget error: $_"
+            }
+        }
+
+        $successCount = $successes.Count
+        $failCount = $failures.Count
+
+        if ($successCount -gt 0) {
+            Write-Host "`r✅ Successfully updated $successCount package(s):        " -ForegroundColor Green
+            Write-Log "Successfully updated $successCount package(s):" -Level 'SUCCESS'
+            $successes | ForEach-Object { Write-LogLine "✔ $_" }
+        }
+
+        if ($failCount -gt 0) {
+            Write-Host "`r❌ Failed to update $failCount package(s):        " -ForegroundColor Red
+            Write-Log "Failed to update $failCount package(s):" -Level 'ERROR'
+            $failures | ForEach-Object { Write-LogLine "✘ $_" }
+        }
+
+        if ($failCount -eq 0 -and $successCount -gt 0 -and -not ($script:Errors -join "`n" -match '0x800704c7')) {
+            Write-Host "`r✅ All Winget packages updated successfully!" -ForegroundColor Green
+            Write-LogLine "All Winget packages updated successfully."
+        } elseif ($script:Errors -join "`n" -match '0x800704c7') {
+            Write-Host "`r⚠️ Winget update was canceled before completion." -ForegroundColor Yellow
+            Write-LogLine "Winget update was canceled before completion."
+
+            if ($successCount -gt 0) {
+                Write-Host "`r✅ Partial success: $successCount package(s) updated before cancellation." -ForegroundColor Cyan
+                Write-LogLine "Partial success: $successCount package(s) updated before cancellation."
+            }
+
+            if ($failCount -gt 0) {
+                Write-Host "`r❌ $failCount package(s) failed before cancellation." -ForegroundColor Red
+                Write-LogLine "$failCount package(s) failed before cancellation."
+            }
+        }
+
+        return $successCount
     } catch {
         Write-ExceptionDetails -ex $_.Exception
         $script:Errors += "Winget update failed"
@@ -380,5 +435,3 @@ function Update-WingetPackages {
 }
 
 Export-ModuleMember -Function Update-PipPackages, Update-ChocolateyPackages, Update-WingetPackages, Update-PipSelf, Save-PackageSnapshot, Show-SummaryPanel, Show-ErrorSummary, Write-FancyHeader, Get-LogFilePath, Test-PythonAvailable
-
-# Export-ModuleMember -Function Update-PipPackages, Update-ChocolateyPackages, Update-WingetPackages, Update-PipSelf, Save-PackageSnapshot, Show-SummaryPanel, Show-ErrorSummary, Write-FancyHeader, Get-LogFilePath, Initialize-LogFolder, Test-PythonAvailable
