@@ -359,6 +359,8 @@ function Update-WingetPackages {
             Start-Sleep -Milliseconds 100
         }
 
+        Write-Host ""
+
         $output = Receive-Job $job
         Remove-Job $job
 
@@ -372,7 +374,7 @@ function Update-WingetPackages {
 
         $output | ForEach-Object {
             # Skip spinner and corrupted progress lines
-            if ($_ -match '\]\s*[-\\|/]$' -or $_ -match '\]\s*[\u2550-\u25FF]+.*\/.*MB' -or $_ -match 'Γ') {
+            if ([string]::IsNullOrWhiteSpace($_) -or $_ -match '^\s*[-\\|/](\s+)?$' -or $_ -match '^\s*[\u2550-\u25FF]+.*\/.*[KMGT]B' -or $_ -match 'Γ' -or $_ -match '^\s*\d+(\.\d+)?\s*[KMGT]B$') {
                 return
             } else {
                 Write-Host $_ -ForegroundColor Gray
@@ -383,10 +385,10 @@ function Update-WingetPackages {
                 Write-LogLine "🔄 Dependency detected: $_"
             }
 
-            if ($_ -match 'Successfully installed (.+)') {
-                $successes += $matches[1].Trim()
-            } elseif ($_ -match 'Install failed: (.+)') {
-                $failures += $matches[1].Trim()
+            if ($_ -match 'Successfully installed') {
+                $successes += $matches[1]
+            } elseif ($_ -match 'Install failed:') {
+                $failures += $matches[1]
             } elseif ($_ -match '0x8[0-9A-Fa-f]{7}') {
                 Write-Log "Winget error detected: $_" -Level 'ERROR'
                 $script:Errors += "Winget error: $_"
@@ -397,32 +399,36 @@ function Update-WingetPackages {
         $failCount = $failures.Count
 
         if ($successCount -gt 0) {
-            Write-Host "`r✅ Successfully updated $successCount package(s):        " -ForegroundColor Green
+            # Write-Host "`r✅ Successfully updated $successCount package(s):        " -ForegroundColor Green
             Write-Log "Successfully updated $successCount package(s):" -Level 'SUCCESS'
             $successes | ForEach-Object { Write-LogLine "✔ $_" }
         }
 
         if ($failCount -gt 0) {
-            Write-Host "`r❌ Failed to update $failCount package(s):        " -ForegroundColor Red
+            # Write-Host "`r❌ Failed to update $failCount package(s):        " -ForegroundColor Red
             Write-Log "Failed to update $failCount package(s):" -Level 'ERROR'
             $failures | ForEach-Object { Write-LogLine "✘ $_" }
         }
 
         if ($failCount -eq 0 -and $successCount -gt 0 -and -not ($script:Errors -join "`n" -match '0x800704c7')) {
-            Write-Host "`r✅ All Winget packages updated successfully!" -ForegroundColor Green
-            Write-LogLine "All Winget packages updated successfully."
+            # Write-Host "`r✅ All Winget packages updated successfully!" -ForegroundColor Green
+            Write-Log "All Winget packages updated successfully!" -Level 'SUCCESS'
+            # Write-LogLine "All Winget packages updated successfully."
         } elseif ($script:Errors -join "`n" -match '0x800704c7') {
-            Write-Host "`r⚠️ Winget update was canceled before completion." -ForegroundColor Yellow
-            Write-LogLine "Winget update was canceled before completion."
+            # Write-Host "`r⚠️ Winget update was canceled before completion." -ForegroundColor Yellow
+            Write-Log "Winget update was canceled before completion." -Level 'WARN'
+            # Write-LogLine "Winget update was canceled before completion."
 
             if ($successCount -gt 0) {
-                Write-Host "`r✅ Partial success: $successCount package(s) updated before cancellation." -ForegroundColor Cyan
-                Write-LogLine "Partial success: $successCount package(s) updated before cancellation."
+                # Write-Host "`r✅ Partial success: $successCount package(s) updated before cancellation." -ForegroundColor Cyan
+                Write-Log "Partial success: $successCount package(s) updated before cancellation." -Level 'SUCCESS'
+                # Write-LogLine "Partial success: $successCount package(s) updated before cancellation."
             }
 
             if ($failCount -gt 0) {
-                Write-Host "`r❌ $failCount package(s) failed before cancellation." -ForegroundColor Red
-                Write-LogLine "$failCount package(s) failed before cancellation."
+                # Write-Host "`r❌ $failCount package(s) failed before cancellation." -ForegroundColor Red
+                Write-Log "$failCount package(s) failed before cancellation." -Level 'ERROR'
+                # Write-LogLine "$failCount package(s) failed before cancellation."
             }
         }
 
