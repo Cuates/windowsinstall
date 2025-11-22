@@ -1,5 +1,3 @@
-# powershell.exe -ExecutionPolicy Bypass -File "C:\Path\To\Run-PackageUpdater.ps1"
-
 # Run-PackageUpdater.ps1
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -7,9 +5,7 @@ $ErrorActionPreference = 'Stop'
 
 # Elevate if not admin
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host "🔐 Elevating to administrator..." -ForegroundColor Yellow
-    $restartParams = "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
-    Start-Process powershell.exe -Verb RunAs -ArgumentList $restartParams
+    Write-Host "🔐 Administrator Terminal Is Needed..." -ForegroundColor Yellow
     exit
 }
 
