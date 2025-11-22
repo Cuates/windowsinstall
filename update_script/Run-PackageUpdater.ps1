@@ -51,7 +51,7 @@ Show-ErrorSummary
 # Optional: graceful exit countdown
 Write-Host ""
 for ($i = 5; $i -gt 0; $i--) {
-    Write-Host "  Closing in $i seconds... Press any key to exit now." -NoNewline -ForegroundColor Cyan
+    Write-Host ("`r  Closing in {0} seconds... Press any key to exit now." -f $i) -NoNewline -ForegroundColor Cyan
     if ([Console]::KeyAvailable) {
         $null = [Console]::ReadKey($true)
         break
